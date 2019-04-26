@@ -38,7 +38,7 @@ public class Order {
 	}
 	private static MongoCollection<Document> collection = null;
 
-	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) {
+	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) throws ParseException {
 		MongoClientOptions.Builder options = MongoClientOptions.builder()
 	            .connectionsPerHost(DbPoolCount);
 		MongoClientURI uri = new MongoClientURI(
@@ -56,8 +56,11 @@ public class Order {
 			newOrder.append(key, atrributes.get(key));
 		}
 		collection.insertOne(newOrder);
+		JSONParser parser = new JSONParser();
+		HashMap<String, Object> returnValue = Command.jsonToMap((JSONObject) parser.parse(newOrder.toJson()));
 
-		return atrributes;
+
+		return returnValue;
 	}
 
 	public static HashMap<String, Object> update(String id, HashMap<String, Object> atrributes) {
