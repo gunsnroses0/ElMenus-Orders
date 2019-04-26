@@ -1,0 +1,12 @@
+POST,/order,CreateOrder
+GET,/order/id,GetOrder
+GET,/order,GetOrders
+PATCH,/order/id,UpdateOrder
+POST,/order/addCommand/,AddCommand
+POST,/order/updateCommand/,UpdateCommand
+POST,/order/deleteCommand/,DeleteCommand
+POST,/order/updateThreadPoolCount/,UpdateThreadPoolCount
+POST,/order/updateDBPoolCount/,UpdateDBPoolCount
+GET,/order/freeze/,FreezeQueue
+GET,/order/resume/,ResumeQueue
+POST,/order,Test
