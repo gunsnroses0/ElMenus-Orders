@@ -1,6 +1,6 @@
-POST,/order,CreateOrder
+POST,/order/,CreateOrder
 GET,/order/id,GetOrder
-GET,/order,GetOrders
+GET,/order/,GetOrders
 PATCH,/order/id,UpdateOrder
 POST,/order/addCommand/,AddCommand
 POST,/order/updateCommand/,UpdateCommand
