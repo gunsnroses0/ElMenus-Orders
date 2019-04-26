@@ -30,6 +30,7 @@ public class Order {
 
 	private static final String COLLECTION_NAME = "orders";
 	private static int DbPoolCount = 4;
+	static String host = System.getenv("MONGO_URI");
 	public static int getDbPoolCount() {
 		return DbPoolCount;
 	}
@@ -42,7 +43,7 @@ public class Order {
 		MongoClientOptions.Builder options = MongoClientOptions.builder()
 	            .connectionsPerHost(DbPoolCount);
 		MongoClientURI uri = new MongoClientURI(
-				"mongodb://localhost",options);
+				host,options);
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
@@ -67,7 +68,7 @@ public class Order {
 		MongoClientOptions.Builder options = MongoClientOptions.builder()
 	            .connectionsPerHost(DbPoolCount);
 		MongoClientURI uri = new MongoClientURI(
-				"mongodb://localhost",options);
+				host,options);
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
@@ -92,7 +93,7 @@ public class Order {
 		MongoClientOptions.Builder options = MongoClientOptions.builder()
 	            .connectionsPerHost(DbPoolCount);
 		MongoClientURI uri = new MongoClientURI(
-				"mongodb://localhost",options);
+				host,options);
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
@@ -127,7 +128,7 @@ public class Order {
 		MongoClientOptions.Builder options = MongoClientOptions.builder()
 	            .connectionsPerHost(DbPoolCount);
 		MongoClientURI uri = new MongoClientURI(
-				"mongodb://localhost",options);
+				host,options);
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
