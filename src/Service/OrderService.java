@@ -31,6 +31,7 @@ import Commands.CreateOrder;
 import Commands.GetOrder;
 import Commands.GetOrders;
 import Commands.UpdateOrder;
+import Model.Order;
 
 public class OrderService {
 	private static  String RPC_QUEUE_NAME = "order-request";
@@ -59,6 +60,7 @@ public class OrderService {
 	public static void main(String[] argv) {
 		run();
 		ServiceController.run();
+		Order.initializeDb();
 	}
 
 	public static void run() {

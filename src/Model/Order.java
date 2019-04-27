@@ -31,6 +31,22 @@ public class Order {
 	private static final String COLLECTION_NAME = "orders";
 	private static int DbPoolCount = 4;
 	static String host = System.getenv("MONGO_URI");
+
+	
+	static MongoClientOptions.Builder options = null;
+	static MongoClientURI uri = null;
+	static MongoClient mongoClient = null; 
+	
+	public static void initializeDb() {
+		options = MongoClientOptions.builder()
+				.connectionsPerHost(DbPoolCount);
+//		uri = new MongoClientURI(
+//				host,options);
+		uri = new MongoClientURI(
+				"mongodb://localhost");
+		mongoClient = new MongoClient(uri);
+			
+	}
 	public static int getDbPoolCount() {
 		return DbPoolCount;
 	}
@@ -40,14 +56,7 @@ public class Order {
 	private static MongoCollection<Document> collection = null;
 
 	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) throws ParseException {
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-	            .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(
-				host,options);
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
-//    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
-//    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
 
 		// Retrieving a collection
 		MongoCollection<Document> collection = database.getCollection("orders");
@@ -65,11 +74,6 @@ public class Order {
 	}
 
 	public static HashMap<String, Object> update(String id, HashMap<String, Object> atrributes) {
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-	            .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(
-				host,options);
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
 //    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
@@ -90,11 +94,6 @@ public class Order {
 	}
 
 	public static HashMap<String, Object> get(String messageId) {
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-	            .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(
-				host,options);
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
 //    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
@@ -125,11 +124,6 @@ public class Order {
 	}
 	
 	public static ArrayList<HashMap<String, Object>> getAll() {
-		MongoClientOptions.Builder options = MongoClientOptions.builder()
-	            .connectionsPerHost(DbPoolCount);
-		MongoClientURI uri = new MongoClientURI(
-				host,options);
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
 //    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
