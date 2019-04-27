@@ -40,10 +40,8 @@ public class Order {
 	public static void initializeDb() {
 		options = MongoClientOptions.builder()
 				.connectionsPerHost(DbPoolCount);
-//		uri = new MongoClientURI(
-//				host,options);
 		uri = new MongoClientURI(
-				"mongodb://localhost");
+				host,options);
 		mongoClient = new MongoClient(uri);
 			
 	}
