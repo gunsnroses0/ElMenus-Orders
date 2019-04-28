@@ -29,7 +29,7 @@ import Commands.Command;
 public class Order {
 
 	private static final String COLLECTION_NAME = "orders";
-	private static int DbPoolCount = 4;
+	private static int DbPoolCount = 20;
 	static String host = System.getenv("MONGO_URI");
 
 	
