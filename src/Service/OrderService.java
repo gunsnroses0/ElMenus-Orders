@@ -55,7 +55,7 @@ public class OrderService {
 
 	public static MongoDatabase database;
 	public static HashMap<String, String> config;
-	static int threadPoolCount=4;
+	static int threadPoolCount=20;
 
 	public static void main(String[] argv) {
 		run();
